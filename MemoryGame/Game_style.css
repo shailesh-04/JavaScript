@@ -1,0 +1,86 @@
+:root{
+	--row:10rem;
+	--no:3;
+}
+*{
+	padding: 0;
+	margin: 0;
+	font-family: Sans-Serif;
+}
+body{
+	background-image: url('./Background.jpg');	
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+}
+section{
+	width: 100%;
+	height:100vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.Game_Box{
+	font-size: 20px;
+	display: grid;
+	grid-template-columns: repeat(var(--no),var(--row));
+	grid-auto-rows: var(--row);
+	gap: .5rem;
+	font-size: 4.5rem;
+	padding: .3rem;
+}
+.card {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5%;
+	transition: .25s;
+}
+.card:after{
+	content: '?';
+	position: absolute;
+	inset: 0;	
+	background: #edb015;
+	border-radius: 5%;
+	color: #777777;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 900;
+	transition: .25s;
+	transform: rotateY(0deg)
+	backface-visibility: hidden;
+}
+.boxOpen:after,
+.MatchBox:after{
+
+	transform: rotateY(180deg);
+	opacity: 0;
+}
+.MatchBox{
+	opacity: 0;
+}
+.GameScore{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.GameScore  h1{
+	font-size: 50px;
+	color: #fff;
+}
+.GameScore  i{
+	font-size: 50px;
+	font-weight: 900;
+}
+@media (max-width:560px){
+	:root{
+		--row:7.5rem;
+	}
+}
+@media (max-width:400px){
+	:root{
+		--row:6rem;
+	}
+}

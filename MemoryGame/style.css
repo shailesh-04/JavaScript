@@ -1,0 +1,167 @@
+	*{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			overflow: hidden; 
+			font-family: Sans-Serif;
+			/* border: 1px solid red; */
+		}
+		body{
+			width: 100%;
+		}
+		form{
+			width: 100%;
+			height: 100vh;
+			background-image: url('/Background.jpg');
+			background-size: cover;
+			
+		}
+		.head{
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: .4rem;
+		}
+		.head .ShowHideOP{
+			position: relative;
+			display: flex;
+		}
+		.head .ShowHideOP > div > input{
+			position: absolute;
+			display: none;
+		}
+		.head > i{
+			font-size: 3rem;
+			color: #fff;
+			background: #11111188;
+			padding: 3px;
+			margin: 0 10px;
+			border-radius: 10%;
+		}
+		.head .ShowHideOP > div{
+			width: 12rem;
+			height: 6rem;
+			background: #5e4300;	
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: .3rem;
+			position: relative;
+			padding: .3rem;
+			border-radius: 10%;
+		}
+		.head .ShowHideOP > div > input:checked + label{
+			background: #edb015;
+		}
+		.head .ShowHideOP > div > label{
+			font-size: 3rem;
+			display: flex;
+			width: 100%;
+			height: 100%;
+			align-items: center;
+			justify-content: center;
+			background: #edb015aa;
+			border-radius: 10%;
+		}
+		.head .ShowHideOP > div > .hide,.AllOption{
+			font-weight: 800;
+			color: #33333355;
+		}
+		
+		
+		.catagory{
+			height: 78%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+		}
+		.CardSelect{
+			display: grid;
+			grid-template-columns: repeat(3,6.5rem);
+			grid-template-rows: repeat(2,6.5rem);
+			gap: .5rem;
+		}
+		.CardSelect > div{
+			border-radius: 10%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.CardSelect > div > input:checked + label{
+			border: .4rem solid #fff;
+		}
+		.CardSelect > div > label{
+		
+			font-size: 220%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			border-radius: 10%;
+			background: #edb015;
+			border: .4rem solid #5e4300;
+		}
+		.CardSelect > div > input{
+			display: none;
+		}
+		
+		
+		.SizeOfCardSelect{
+			display: flex;
+			gap: .6rem;
+		}
+		
+		.SizeOfCardSelect > div{
+			width: 6rem;
+			height: 6rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 10%;
+		}
+		.SizeOfCardSelect > div > input{
+			display: none;
+		}
+		.SizeOfCardSelect > div > input:checked + label{
+			border: .4rem solid #fff;
+		}
+		.SizeOfCardSelect > div > label{
+			background: #25284699;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 200%;
+			font-weight: 900;
+			color: #fff;
+			border: .4rem solid #0f1c9b;
+		}
+		
+		.btn{
+			font-size: 200%;
+			font-weight: 700;
+			letter-spacing: 1px;
+			padding: 1rem 4rem;
+			border-radius: 10px;
+			border: none;
+			background: #edb015;
+			
+		}
+	@media (max-width:880px){
+		html{
+			font-size: 12px;
+		}
+	}
+	@media (max-width:700px){
+		html{
+			font-size: 10px;
+		}
+	}	
+	@media (max-width:520px){
+		.catagory{
+			flex-direction: column;
+		}
+	}	
