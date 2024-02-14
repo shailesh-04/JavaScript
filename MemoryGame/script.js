@@ -1,7 +1,6 @@
 
 	const CardSelect = document.querySelector(".CardSelect");
-	const SizeOfCardSelect = document.querySelector(".SizeOfCardSelect");
-	
+	const SizeOfCardSelect = document.querySelector(".SizeOfCardSelect"); 
 	const emoji = ["😍","💐","🍎","❤️","🐱","?"];
 	const size = ["2x3","3x4","4x5"];
 	
@@ -20,3 +19,30 @@
 	document.querySelector(".CardLable[for='Card5']").classList.add("AllOption");;
 	document.querySelector("#Card0").checked = true;
 	document.querySelector("#Size0").checked = true;
+	
+// 	Valum On Off Buttom 
+	
+const vlmBtn = document.querySelector(".volumeBtn");
+var bull = false;
+VolumeOn();
+vlmBtn.onclick = function(){
+    VolumeOn();
+};
+function VolumeOn(){
+  const inptId = document.querySelectorAll("input[name='vlm']");
+  if(bull){
+    inptId[0].id = "";
+    inptId[1].id = "vlm";
+    vlmBtn.children[0].classList.remove("bxs-volume-mute");
+    bull = false;
+  }else{
+    inptId[1].id = "";
+    inptId[0].id = "vlm";
+    vlmBtn.children[0].classList.add("bxs-volume-mute");
+    bull = true;
+  }
+}
+const audio = new Audio('./click.mp3');
+function Sound(){
+  audio.play();
+}

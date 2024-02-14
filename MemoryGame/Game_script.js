@@ -1,16 +1,28 @@
 const gameBox = document.querySelector(".Game_Box");
-const audio = new Audio('./click.mp3');
-const audioClick = new Audio('./clickKey.mp3');
-const audioWin = new Audio('./WinSound.mp3');
+var audio;
+var audioClick;
+var audioWin;
 const root = document.querySelector(':root');
 var emoji;
 const box = [];
 let noOfBox;
 let score =0;
-const info = location.search.split("&");
 
-console.log(parseInt((info[0].split("="))[1]));
-switch(parseInt((info[1].split("="))[1])){
+const info = location.search.split("&");
+var vlm =info[1].split("=")[1]; 
+if(vlm==1){
+  console.log("True");
+  audio = new Audio('./click.mp3');
+  audioClick = new Audio('./clickKey.mp3');
+  audioWin = new Audio('./WinSound.mp3');
+}else{
+  console.log("false");
+  audio = new Audio('./Silence.mp3');
+  audioClick = new Audio('./Silence.mp3');
+  audioWin = new Audio('./Silence.mp3');
+}
+
+switch(parseInt((info[2].split("="))[1])){
 	case 0: emoji = ["😁","😘","😈","🎃","😡","😎","🥰","🤯","😂","😛"]; break;
 	case 1: emoji = ["💐","🌹","🥀","🌷","🌺","🌸","🏵️","🌻","🌼","💮"]; break;
 	case 2: emoji = ["🍓","🍒","🍎","🍉","🍑","🍊","🥭","🍍","🍌","🍋"]; break;
@@ -18,7 +30,7 @@ switch(parseInt((info[1].split("="))[1])){
 	case 4: emoji = ["🐵","🦁","🐯","🐱","🐶","🐺","🐻","🐨","🐼","🐹"]; break;
 	case 5: emoji = ["🌼","😘","💘","🐶","🌺","😎","🌹","🍒","💔","🐹"]; break;
 }
-switch(parseInt((info[2].split("="))[1])){
+switch(parseInt((info[3].split("="))[1])){
 	case 0: noOfBox = 6;
 		root.style.setProperty('--no','3');break;
 	case 1: noOfBox = 12; 

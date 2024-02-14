@@ -9,7 +9,7 @@
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onclick="Sound()">
 	<form action="./Game.html" mathod="get">
 	<!-- 	TOP HEAD 3 ICON  -->
 		<div class="head">
@@ -23,7 +23,11 @@
 					<label for="hide" class="hide">?</label>
 				</div>
 			</div>
-			<i class='bx bxs-volume-full' ></i>
+			<div class="valueCntrl">
+		    <label for="vlm" class="volumeBtn"><i class='bx bxs-volume-full'></i></label>
+			  <input type="radio" name="vlm" id="vlm" value="0" checked/>
+			  <input type="radio" name="vlm" id="" value="1" />
+		  </div>
 		</div>
 		
 		<!-- CATAGORY SELECTION OPTION-->
@@ -42,4 +46,7 @@
 	</form>
 </body>
 <script type="text/javascript" src="script.js"></script>
+<script>
+
+</script>
 </html>
