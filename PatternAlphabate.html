@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabet pattern 4 - javascript</title>
+</head>
+<body>
+  <h2>Creating alphabet pattern in javascript.</h2>
+  <script>
+    let n = 5; // you can take input using prompt or change the value
+    let string = "";
+    // External loop
+    for (let i = 1; i <= n; i++) {
+      for (let j = 0; j < n - i + 1; j++) {
+        string += String.fromCharCode(j + 65);
+      }
+      string += "\n";
+    }
+    document.write(`<pre>${string}</pre>`);
+  </script>
+</body>
+</html>

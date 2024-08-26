@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>validate password</title>
+	<style type="text/css">
+	body{
+	}
+	</style>
+</head>
+
+<body>
+	<form>
+		<div class="pass">
+			<label for="t1" id="lable">Password:</label>
+			<input type="text" id="t1" onkeyup="valid()"/>
+			<span id="t2"></span>
+			<button>Submi</button>
+		</div>
+	</form>
+	<script type="text/javascript">
+		var res = document.getElementById("t2");
+		var str = document.getElementById("t1");
+		var lab = document.getElementById("lable");
+		function valid() {
+			lab.style.top="0px";	
+			str.style.background="red";
+			str.style.height="10%";
+		if (str.value.match(/[a-z A-z]/g)&&
+//		str.value.match(/[A-Z]/g) && 
+		str.value.match(/[0-9]/g) &&  
+		str.value.length >=8)
+		{
+			res.innerHTML = "Password Is Strong";
+			res.style.color = "green";
+		}
+		else if (str.value.match(/[a-z A-Z]/)&&
+//		str.value.match(/[A-Z]/g) && 
+		str.value.match(/[0-9]/) &&  
+		str.value.length >=6)
+		{
+			res.innerHTML = "Password Is Middeam";
+			res.style.color="yellow";
+		}
+		else
+		{
+			res.innerHTML = "Password Is Weak";
+			res.style.color = "red";
+		}
+	
+	}
+	</script>
+</body>
+
+</html>
+	

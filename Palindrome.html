@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<script>
+			function palin()
+			{	
+				var a,no,b,temp=0;
+				var A = document.getElementById("ANS");
+				no=Number(document.getElementById("no_input").value);
+				b=no;
+				while(no>0)
+				{
+					a=no%10;
+					temp=temp*10+a;					
+					no=parseInt(no/10);
+				}
+				if(temp==b)
+				{
+					A.innerHTML = "Palindrome number";
+				}
+				else
+				{
+					A.innerHTML = "Not Palindrome number";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		Enter any Number: <input id="no_input">
+		<button onclick="palin()" >Check</button></br></br>
+		Ans : <input style="color:red;" id="ANS" disabled="disabled" >
+	</body>
+</html>

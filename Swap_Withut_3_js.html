@@ -1,0 +1,54 @@
+   <html>
+   <head>
+      <title>Swap Tow Number Withut Use Third Var </title>
+      <style type="text/css">
+      input{
+         margin: 10px;
+      }
+      form{
+         height: 80vh;
+         width: 40%;
+         border-radius:5px;
+         border: 3px solid red;
+         padding:20px;
+         
+      }
+      button{
+         margin: 0px 200px;
+         width: 200px;
+         font-size: 30px;
+         border-radius:20px;
+         border:1px solid yellow;
+         background-image: linear-gradient(to right bottom,red,white,yellow);
+      }
+      button:hover{
+         border-radius:0px;
+      }
+      </style>
+      <script type="text/javascript">
+       function Swap(){
+          var Num1=document.getElementById("aa").value;
+          var Num2=document.getElementById("bb").value;
+          parseInt(Num1);
+          parseInt(Num2);
+          Num1=Num1+Num2;
+          Num2=Num1-Num2;
+          Num1=Num1-Num2;
+          document.getElementById("ans").innerHTML=Num1;
+       }
+      </script>
+   </head>
+   <body>
+   <form>
+      <h2>Swap Tow Number Without third ver</h2>
+      <input type="text/javascript" id="aa" placeholder="Enter Number Of 'A'...">
+      <br>
+      <input type="text/javascript" id="bb" placeholder="Enter Number of 'B'...">
+      <br>
+      <button onclick="Swap()">To Swap</button>
+      <br><br>
+      Value Of A:<p id="Ans"></p><br>
+      Value Of B:<p id="Ans1"></p>
+   </form>
+   </body>
+</html>

@@ -1,0 +1,27 @@
+<htlm>
+   <head>
+      <title>Password Velidation</title>
+      <script type="text/javascript">
+         function Validation(InputText)
+         {
+            
+            alert("");
+            var decimal= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=*[^a-z A-Z 0-9])(?!.*/s).{8.15}$\;
+            if(InputText.value.match(decimal))
+            {
+               alert("Your Password Is Valid...");
+               return true;
+            }
+            else
+            {
+               alert("Your Password is Not Valid....");
+               return false;
+            }
+         }
+      </script>
+   </head>
+   <form action="#" name="Pass_valid" onsubmit="Validation(document.pass)">
+      Enter Your Password :<input type="password" id="pass"><br>
+      <input type="submit" value="Chech">
+   </form>
+</htlm>
