@@ -1,4 +1,6 @@
-Sure! Here's a clear and beginner-friendly explanation of **variables in JavaScript**:
+# VARIABLES
+
+Here's a clear and beginner-friendly explanation of **variables in JavaScript**:
 
 ---
 
@@ -56,3 +58,65 @@ console.log(yearOfBirth);    // Output: 2000
 ```
 
 ---
+# DIFFERENCE BETWEEN `LET` AND `VAR`
+Here's a simple explanation of the **difference between `let` and `var`** in JavaScript:
+
+---
+
+### 🔍 `let` vs `var` in JavaScript
+
+| Feature           | `let`                           | `var`                                  |
+| ----------------- | ------------------------------- | -------------------------------------- |
+| **Introduced in** | ES6 (2015)                      | ES5 and earlier                        |
+| **Scope**         | Block-scoped (`{ ... }`)        | Function-scoped                        |
+| **Hoisting**      | Hoisted but not initialized     | Hoisted and initialized as `undefined` |
+| **Redeclaration** | ❌ Not allowed in the same scope | ✅ Allowed in the same scope            |
+| **Use Today?**    | ✅ Recommended                   | ❌ Avoid (for clean code)               |
+
+---
+
+### 🔧 Examples
+
+#### 1. **Scope difference**
+
+```javascript
+function test() {
+  if (true) {
+    let x = 10;
+    var y = 20;
+  }
+  console.log(x); // ❌ Error: x is not defined (block scope)
+  console.log(y); // ✅ Output: 20 (function scope)
+}
+test();
+```
+
+#### 2. **Redeclaration**
+
+```javascript
+let a = 5;
+let a = 10; // ❌ Error: Identifier 'a' has already been declared
+
+var b = 5;
+var b = 10; // ✅ No error
+```
+
+#### 3. **Hoisting**
+
+```javascript
+console.log(x); // ❌ Error: Cannot access 'x' before initialization
+let x = 5;
+
+console.log(y); // ✅ Output: undefined
+var y = 5;
+```
+
+---
+
+### ✅ Recommendation:
+
+Always use `let` (or `const` when the value shouldn't change). Avoid `var` in modern JavaScript for cleaner, safer code.
+
+---
+
+Would you like an example project or code snippet using `let` and `const` together?

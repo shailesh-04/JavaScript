@@ -1,3 +1,4 @@
+# INTRODUCTION
 Here is a simple and clear introduction to **JavaScript**:
 
 ---
