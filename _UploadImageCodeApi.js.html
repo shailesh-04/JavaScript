@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AIML API Test</title>
+  </head>
+
+  <body>
+    <!-- HTML input for image -->
+    <input type="file" id="imageInput" accept="image/*" />
+    <input type="text" id="messageInput" placeholder="Ask about the image..." />
+    <button onclick="handleSend()">Send</button>
+
+    <script>
+      async function sendMessage(message, imageFile) {
+        let image = null;
+        let mimeType = null;
+
+        // If user selected an image, convert to base64
+        if (imageFile) {
+          mimeType = imageFile.type; // e.g. "image/jpeg"
+          image = await toBase64(imageFile); // strip the prefix
+        }
+
+        console.log("REQUEST IS SEND :) ");
+
+        const res = await fetch(
+          "https://withered-band-411e.marvel67821.workers.dev/chat",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message, image, mimeType }),
+          },
+        );
+
+        const data = await res.json();
+        console.log(data.reply);
+      }
+
+      // Helper: File → base64 (without "data:image/...;base64," prefix)
+      function toBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const base64 = reader.result.split(",")[1]; // ← strip prefix
+            resolve(base64);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+      async function handleSend() {
+        const message = document.getElementById("messageInput").value;
+        const imageFile = document.getElementById("imageInput").files[0];
+        await sendMessage(message, imageFile);
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 30px;
+      }
+      input,
+      textarea,
+      button {
+        margin: 10px;
+        padding: 10px;
+        width: 300px;
+      }
+      img {
+        margin-top: 20px;
+        max-width: 400px;
+        border-radius: 10px;
+      }
+    </style>
+
+    <h2>🚀 AI Image Generator</h2>
+
+    <textarea id="prompt" placeholder="Enter prompt..."></textarea><br />
+
+    <input type="file" id="imageInput" accept="image/*" /><br />
+    <input type="file" id="maskInput" accept="image/*" /><br />
+
+    <button onclick="generate()">Generate</button>
+
+    <div>
+      <h3>Result:</h3>
+      <img id="result" />
+    </div>
+
+    <script>
+      async function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const base64 = reader.result.split(",")[1]; // remove prefix
+            resolve(base64);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      async function generate() {
+        const prompt = document.getElementById("prompt").value;
+        const imageFile = document.getElementById("imageInput").files[0];
+        const maskFile = document.getElementById("maskInput").files[0];
+
+        let imageBase64 = null;
+        let maskBase64 = null;
+
+        if (imageFile) {
+          imageBase64 = await fileToBase64(imageFile);
+        }
+
+        if (maskFile) {
+          maskBase64 = await fileToBase64(maskFile);
+        }
+
+        const res = await fetch(
+          "https://spring-water-b3e5.marvel67821.workers.dev/image",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt,
+              image: imageBase64,
+              mask: maskBase64,
+              mimeType: imageFile?.type,
+            }),
+          },
+        );
+
+        const data = await res.json();
+
+        if (data.image) {
+          document.getElementById("result").src =
+            "data:image/png;base64," + data.image;
+        } else {
+          alert("Error: " + JSON.stringify(data));
+        }
+      }
+    </script>
+  </body>
+</html>
